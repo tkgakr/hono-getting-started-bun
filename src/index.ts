@@ -17,6 +17,9 @@ app.get(
     onFound: (_path, c) => {
       c.header('Cache-Control', `public, immutable, max-age=604800`)
     },
+    onNotFound: (path, c) => {
+      console.log(`${path} is not found, you access ${c.req.path}`)
+    },
   })
 )
 app.get('*', serveStatic({ path: './statics/fallback.txt' }))
