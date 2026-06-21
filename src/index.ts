@@ -10,6 +10,10 @@ app.get(
   serveStatic({
     root: './',
     rewriteRequestPath: (path) => path.replace(/^\/static/, '/statics'),
+    mimes: {
+      m3u8: 'application/vnd.apple.mpegurl',
+      ts: 'video/mp2t',
+    },
   })
 )
 app.get('*', serveStatic({ path: './statics/fallback.txt' }))
