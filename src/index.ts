@@ -20,6 +20,7 @@ app.get(
     onNotFound: (path, c) => {
       console.log(`${path} is not found, you access ${c.req.path}`)
     },
+    precompressed: true,
   })
 )
 app.get('*', serveStatic({ path: './statics/fallback.txt' }))
