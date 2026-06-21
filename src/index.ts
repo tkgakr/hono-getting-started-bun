@@ -14,6 +14,9 @@ app.get(
       m3u8: 'application/vnd.apple.mpegurl',
       ts: 'video/mp2t',
     },
+    onFound: (_path, c) => {
+      c.header('Cache-Control', `public, immutable, max-age=604800`)
+    },
   })
 )
 app.get('*', serveStatic({ path: './statics/fallback.txt' }))
